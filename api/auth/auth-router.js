@@ -4,9 +4,11 @@ const bcrypt = require('bcryptjs')
 
 const Users = require('../users/users-model')
 
+const { checkCredentials, checkUsername, checkUserRegistered } = require('./auth-middleware')
+
 const tokenBuilder = require('../auth/token-builder')
 
-router.post('/register', (req, res) => {
+router.post('/register', checkCredentials, checkUsername, (req, res) => {
   //res.end('implement register, please!');
   /*
     IMPLEMENT
@@ -48,7 +50,7 @@ router.post('/register', (req, res) => {
       .catch(next)
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', checkCredentials, checkUserRegistered, (req, res) => {
   //res.end('implement login, please!');
   /*
     IMPLEMENT
