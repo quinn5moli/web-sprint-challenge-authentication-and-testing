@@ -8,7 +8,7 @@ const { checkCredentials, checkUsername, checkUserRegistered } = require('./auth
 
 const tokenBuilder = require('../auth/token-builder')
 
-router.post('/register', checkCredentials, checkUsername, (req, res) => {
+router.post('/register', checkCredentials, checkUsername, (req, res, next) => {
   //res.end('implement register, please!');
   /*
     IMPLEMENT
@@ -50,7 +50,7 @@ router.post('/register', checkCredentials, checkUsername, (req, res) => {
       .catch(next)
 });
 
-router.post('/login', checkCredentials, checkUserRegistered, (req, res) => {
+router.post('/login', checkCredentials, checkUserRegistered, (req, res, next) => {
   //res.end('implement login, please!');
   /*
     IMPLEMENT
